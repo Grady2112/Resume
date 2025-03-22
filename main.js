@@ -1,6 +1,9 @@
 window.addEventListener('DOMContentLoaded', (event)=>{
                         getVisitCount();
 })
+window.addEventListener('DOMContentLoaded', (event)=>{
+                        fetch();
+})
 const functionApi = '';
 
 const getVisitCount = () => {let count =30;
@@ -16,3 +19,13 @@ const getVisitCount = () => {let count =30;
                              return count;
                              
 }
+
+
+fetch('https://api64.ipify.org?format=json')
+  .then(response => response.json())
+  .then(data => {
+    console.log('User IP Address:', data.ip);
+    // You can send this IP to your server if needed
+    // fetch('/save-ip', { method: 'POST', body: JSON.stringify({ ip: data.ip }) });
+  })
+  .catch(error => console.error('Error fetching IP:', error));
